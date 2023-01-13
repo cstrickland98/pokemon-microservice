@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { PokemonService } from './pokemon.service';
+import { PokemonRequestDto } from './pokemonRequest.dto';
 
 @Controller('pokemon')
 export class PokemonController {
@@ -28,5 +29,10 @@ export class PokemonController {
   @Get('generation/:generation')
   getPokemonByGeneration(@Param('generation') generation: string) {
     return this.pokemonService.getPokemonByGeneration(generation);
+  }
+
+  @Post('pokemonByCriteria')
+  getPokemonByCriteria(@Body() requestDto: PokemonRequestDto) {
+    return this.pokemonService.getPokemonByCriteria(requestDto);
   }
 }
