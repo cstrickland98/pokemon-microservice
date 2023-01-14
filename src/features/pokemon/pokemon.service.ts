@@ -59,8 +59,8 @@ export class PokemonService {
     }
     if (hasName) {
       andConditional
-        ? query.andWhere('name ilike %' + request.name + '%')
-        : query.orWhere('name ilike %' + request.name + '%');
+        ? query.andWhere({ name: ILike('%' + request.name + '%') })
+        : query.orWhere({ name: ILike('%' + request.name + '%') });
     }
     if (hasType1 || hasType2) {
       if (hasType1 && !hasType2) {
