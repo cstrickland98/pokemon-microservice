@@ -82,7 +82,7 @@ export class PokemonService {
       } else if (hasType1 && hasType2) {
         andConditional
           ? query.andWhere(
-              '(type1 = :type1 OR type2 = :type1 OR type1 = :type2 OR type2 = :type2)',
+              '(type1 = :type1 OR type2 = :type1 AND type1 = :type2 OR type2 = :type2)',
               { type1: request.type1, type2: request.type1 },
             )
           : query.orWhere(
